@@ -170,9 +170,9 @@
             <p>{{ detalle.description }}</p>
             <div class="añadirCarrito">
                 <input type="button" id="añadirProducto" value="Añadir al Carrito" @click="añadirCarrito(detalle.id)"> 
-                <div @click="sumarCarrito()">-</div>
+                <div @click="sumarCarrito()">+</div>
                 <div> {{ cantidadesComprar }} </div>
-                <div @click="restarCarrito()">+</div>
+                <div @click="restarCarrito()">-</div>
             </div>
         </div>
     </section>
@@ -188,9 +188,9 @@
                 <h1>{{ producto[0].title }}</h1>
                 <p>{{ producto[0].price }}€</p>
                 <div class="aumentarCantidad">
-                    <div @click="sumarCarritoTotal(producto[0].id)">-</div>
+                    <div @click="sumarCarritoTotal(producto[0].id)">+</div>
                     <div>{{ producto[1] }}</div>
-                    <div @click="restarCarritoTotal(producto[0].id)">+</div>
+                    <div @click="restarCarritoTotal(producto[0].id)">-</div>
                 </div>
                 <button @click="eliminarProductoCarrito(producto[0].id)" id="eliminarProducto">Eliminar Producto</button>
             </div>
