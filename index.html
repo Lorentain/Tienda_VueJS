@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    <title>Tienda</title>
+</head>
+<body id="app">
+
+    <!-- HEADER -->
+
+    <header>
+        <ul class="header__menu">
+            <div class="menu__barras">
+                <div><span class="barra" id="barra1"></span></div>
+                <div><span class="barra" id="barra2"></span></div>
+                <div><span class="barra" id="barra3"></span></div>
+            </div>
+
+            <div class="menu__normal">
+                <li><a @click="verIndex()">Inicio</a></li>
+                <li><a @click="mostrarCategorias(listaCategorias[3])">Ropa Mujer</a></li>
+                <li><a @click="mostrarCategorias(listaCategorias[2])">Ropa Hombre</a></li>
+                <li><a @click="mostrarCategorias(listaCategorias[1])">Joyeria</a></li>
+                <li><a @click="mostrarCategorias(listaCategorias[0])">Electrónica</a></li>
+            </div>
+        </ul>
+
+        <div class="header__titulo">
+           <a href="./index.html"><h1>Tienda Lorenzo</h1></a>
+        </div>
+
+        <div class="menu__login">
+            <a><button type="button" class="menu__boton">Login</button></a>
+            <a @click="verCarrito()"><i class='bx bxs-cart bx-tada'></i></a>
+            <p style="color: white;">{{ listaCarrito.length }}</p>
+        </div>
+    </header>
+
+    <!-- INICIO -->
+
+    <div class="contenedor__index" v-if="mostrarIndex">
+        <main class="main-hero">
+            <div class="contenedor__slider">
+                <div class="slider">
+                  <img src="./assets/slider1.jpg" alt="Imagen 1">
+                </div>
+                <div class="slider">
+                  <img src="./assets/slider2.jpg" alt="Imagen 2">
+                </div>
+            </div>
+        </main>
+        
+        <section class="banner">
+            <div class="banner__titulo">
+                <h1>Banner</h1>
+            </div>
+    
+            <div class="banner__main">
+                <div class="banner__main__img">
+                    <img src="./assets/banner.jpg">
+                </div>
+    
+                <div class="banner__main__parrafo">
+                    <h3 style="text-align: center;">Mejor la ropa de calidad, porque la baja calidad sale caro</h3><br>
+                    <p>En nuestra tienda hacemos ropa con tejidos de gran calidad, que no se rompen fácilmente ni se 
+                        estropean al lavarlos. Cuidamos mucho la calidad de nuestros productos, para ofrecer la mejor
+                        experiencia de uso a nuestros clientes.
+                    </p><br>
+                    <p>Nos gusta que nuestros clientes esten satisfechos con su compra y no se arrepientan de ello.
+                        En nuestro catálogo podrás encontrar ropa de mujer, ropa de hombre e incluso joyas con una de
+                        las mejores calidades del mercado.
+                    </p>
+                </div>
+            </div>
+        </section>
+    
+        <section class="servicios">
+            <div class="servicios__titulo">
+                <h1>Servicios</h1>
+            </div>
+            <div class="servicios__main">
+                <div class="contenedor_cards">
+                    <div class="servicios__cards">
+                        <i class='bx bxl-html5'></i>
+                        <h1>Html 5</h1>
+                        <p>Tengo conocimientos de html avanzados para crear una página web, con cualquier estructura.</p>
+                    </div>
+            
+                    <div class="servicios__cards">
+                        <i class='bx bxl-css3' ></i>
+                        <h1>Css 3</h1>
+                        <p>Css de nivel intermedio, con el cuál puedo maquetar páginas webs a un buen nivel. Incluyendo animaciones, 
+                            transciciones,etc...
+                        </p>
+                    </div>
+            
+                    <div class="servicios__cards">
+                        <i class='bx bxl-javascript' ></i>
+                        <h1>JavaScript</h1>
+                        <p>JavaScript de nivel intermedio, incluido JQuery y VueJS. Proyecto como páginas web de peliculas y tiendas.</p>
+                    </div>
+                </div>
+        
+                <div class="contenedor__redes">
+                    <div class="redes__parrafo">
+                        <p>Para ver cualquiera de mis proyectos, puedes visitar mis redes sociales, en al cuál hay contenido sobre 
+                            diseños de páginas webs creadas por mi. También podrás ver proyectos del instituto y muchas cosas más,
+                            sígueme para no perderte contenido.
+                        </p>
+                    </div>
+                    <div class="redes">
+                        <i class='bx bxl-instagram'></i>
+                        <i class='bx bxl-twitter' ></i>
+                        <i class='bx bxl-youtube' ></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <section class="suscripcion__ofertas">
+            <div class="contenedor__suscripcion">
+                <h2>Recibe nuestras ofertas aquí</h2>
+                <input type="text" placeholder="Email" id="campoEmail">
+                <input type="submit" value="Enviar" id="enviar">
+            </div> 
+        </section>
+    </div>
+
+    <!-- PRODUCTOS -->
+
+    <main class="main-ropa" v-if="mostrarProductos">
+        <div class="main-ropa__titulo">
+            <h1>Ropa de Mujer</h1>
+        </div>
+
+        <div class="main-ropa__productos" >
+            <div class="producto" v-for="objeto in listaProductos" @click="verDetalles(objeto.id)">
+                    <div class="producto__img"><a><img :src="objeto.image"></a></div>
+                    <h2>{{ objeto.title }}</h2>
+                    <p>{{ objeto.price }}€</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- DETALLE PRODUCTO -->
+
+    <section class="detalle-producto" v-if="mostrarDetalle">
+        <div class="producto__imagen">
+            <div class="contenedor-imagen"><img :src="detalle.image"></div>
+        </div>
+
+        <div class="producto__detalle">
+            <h1>{{ detalle.title }}</h1>
+            <p>{{ detalle.price }}€</p>
+            <span>
+            <select>
+                <option value="XS">XS</option>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+            </select>
+            {{ detalle.rating.rate}} &#9733; {{ detalle.rating.count }} valoraciones</span>
+            <p>{{ detalle.description }}</p>
+            <div class="añadirCarrito">
+                <input type="button" id="añadirProducto" value="Añadir al Carrito" @click="añadirCarrito(detalle.id)"> 
+                <div @click="sumarCarrito()">-</div>
+                <div> {{ cantidadesComprar }} </div>
+                <div @click="restarCarrito()">+</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CARRITO -->
+
+    <section class="carrito" v-if="mostrarCarrito">
+        <div class="carrito__producto" v-for="producto in productosCarrito">
+            <div class="carrito-img">
+                <img :src="producto[0].image">
+            </div>
+            <div class="carrito-main">
+                <h1>{{ producto[0].title }}</h1>
+                <p>{{ producto[0].price }}€</p>
+                <div class="aumentarCantidad">
+                    <div @click="sumarCarritoTotal(producto[0].id)">-</div>
+                    <div>{{ producto[1] }}</div>
+                    <div @click="restarCarritoTotal(producto[0].id)">+</div>
+                </div>
+                <button @click="eliminarProductoCarrito(producto[0].id)" id="eliminarProducto">Eliminar Producto</button>
+            </div>
+        </div>
+
+        <div class="carrito__total">
+            <h3>Gastos de Envío: 4,99€</h3>
+            <h3>Total: {{ dineroTotal }}€</h3>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer>
+        <div class="footer__ayuda">
+            <h2>Ayuda</h2>
+            <a href="#">Contacto</a>
+            <a href="#">Preguntas</a>
+        </div>
+        <div class="footer__nosotros">
+            <h2>Nosotros</h2>
+            <a href="#">¿Quienes Somos?</a>
+            <a href="#">¿Donde encontrarnos?</a>
+        </div>
+        <div class="footer__legal">
+            <h2>Legal</h2>
+            <a href="#">Politica y privacidad</a>
+            <a href="#">Politica de reembolso</a>
+        </div>
+        <div class="footer__pago">
+            <h2>Métodos de pago</h2>
+            <i class='bx bxl-paypal'></i>
+            <i class='bx bxs-credit-card-alt'></i>
+            <i class='bx bxl-mastercard'></i>
+        </div>
+    </footer>
+
+    <script src="./scripts/script.js"></script>
+
+</body>
+</html>

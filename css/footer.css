@@ -1,0 +1,28 @@
+footer {
+    display: flex;
+    justify-content: space-around;
+
+    background-color: black;
+    padding: 1rem;
+    width: 100vw;
+    color: white;
+}
+
+footer a {
+    color: white;
+}
+
+.footer__ayuda,.footer__nosotros,.footer__legal {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.footer__pago {
+    text-align: center;
+}
+
+.footer__pago i {
+    font-size: 40px;
+    color: white;
+}

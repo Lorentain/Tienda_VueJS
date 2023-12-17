@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+:root {
+    --blanco: #fff;
+    --negro: #000;
+    --naranja: orange;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    text-decoration: none;
+    list-style: none;
+}
+html {
+    width: 100vw;
+}
+
+body {
+    display: grid;
+    grid-template-rows: auto 1fr auto; 
+
+    width: 100vw;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    background-color: var(--negro);
+    padding: 20px 4%;
+    width: 100vw;
+    height: 100%;
+}
+
+.header__titulo {
+    font-size: 1.5vw;
+    color: var(--blanco);
+}
+
+.header__titulo a {
+    color: var(--blanco);
+}
+
+.header__titulo h1:hover {
+    transform: translateY(-5px);
+}
+
+.header__menu {
+    display: flex;
+    align-items: center;
+
+    height: 150px;
+    width: 80px;
+}
+
+.header__menu li {
+    margin: 20px;
+}
+
+.header__menu a {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--negro);
+}
+
+.menu__normal {
+    display: none;
+}
+
+.menu__normal li {
+    border-bottom: 2px solid var(--negro);
+}
+
+.menu__login {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* ESTILOS DEL MENÚ ICONO CARRITO */
+
+.menu__login i {
+    font-size: 50px;
+    margin-left: 30px;
+    color: orange;
+}
+
+.menu__login a {
+    color: var(--negro);
+}
+
+
+/* ESTILOS DEL MENÚ BOTON */
+
+.menu__boton{
+    padding: 15px 25px;
+    font-size: 18px;
+    letter-spacing: 2px;
+    font-weight: 600;
+    color: var(--negro);
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+}
+  
+.menu__boton:hover {
+    background-color: orange;
+    box-shadow: 0px 15px 20px rgb(103, 67, 1);
+    color: #fff;
+    transform: translateY(-7px);
+}
+  
+.menu__boton:active {
+    transform: translateY(-1px);
+}
+
+.menu__boton a {
+    color: var(--negro);
+}
+
+.menu__boton a:hover {
+    color: var(--blanco);
+}
+
+/* ESTILOS DEL MENÚ BARRAS */ 
+
+.menu__barras {
+    width: 5.5vw;
+    height: 6vh;
+}
+
+.header__menu:hover .menu__normal {
+    display: block;
+    position: fixed;
+    top: 15%;
+    left: 0;
+    background-color: var(--blanco);
+}
+
+.header__menu:hover #barra1{
+    animation-name: animacionBarra1;
+    animation-duration: 3s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+.header__menu:hover #barra2{
+    animation-name: animacionBarra2;
+    animation-duration: 3s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+.header__menu:hover #barra3{
+    animation-name: animacionBarra3;
+    animation-duration: 3s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+.header__menu:not(:hover) #barra1 {
+    animation-name: animacionBarra1Not;
+    animation-duration: 3s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+.header__menu:not(:hover) #barra2 {
+    animation-name: animacionBarra2Not;
+    animation-duration: 3s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+.header__menu:not(:hover) #barra3 {
+    animation-name: animacionBarra3Not;
+    animation-duration: 3s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+.barra {
+    position: absolute;
+    content: '';
+    background-color: gray;
+    height: 4px;
+    width: 50px;
+}
+
+#barra2{
+    margin-top: 20px;
+}
+
+#barra3 {
+    margin-top: 40px;
+}
+
+
+@keyframes animacionBarra1 {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(240deg);
+    }
+}
+
+@keyframes animacionBarra2 {
+    0% {
+        opacity: 1;
+    }
+    
+    10% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes animacionBarra3 {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-240deg);
+    }
+}
+
+@keyframes animacionBarra1Not {
+    from {
+        transform: rotate(240deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes animacionBarra2Not {
+    0% {
+        opacity: 0;
+    }
+
+    90% {
+        opacity: 0;
+    }
+    
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes animacionBarra3Not {
+    from {
+        transform: rotate(-240deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+.header__login {
+    background-color: var(--negro);
+}
+
+.header__login a {
+    color: var(--blanco);
+    font-size: 1.5rem;
+}
